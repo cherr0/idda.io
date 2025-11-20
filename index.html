@@ -1,13 +1,73 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>idda.io</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>idda.io - Opening Soon</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="landing-container">
+    <div class="content-wrapper">
+      <div class="main-text">
+        <span class="date">2025.12.31</span>
+        <h2 className="project-title">잇다 프로젝트</h2>
+        <h1 class="title">Opening Soon</h1>
+      </div>
+
+      <div class="countdown-container">
+        <div class="countdown-item">
+          <span id="days" class="time-value">00</span>
+          <span class="time-label">DAYS</span>
+        </div>
+        <div class="separator">:</div>
+        <div class="countdown-item">
+          <span id="hours" class="time-value">00</span>
+          <span class="time-label">HOURS</span>
+        </div>
+        <div class="separator">:</div>
+        <div class="countdown-item">
+          <span id="minutes" class="time-value">00</span>
+          <span class="time-label">MINUTES</span>
+        </div>
+        <div class="separator">:</div>
+        <div class="countdown-item">
+          <span id="seconds" class="time-value">00</span>
+          <span class="time-label">SECONDS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const targetDate = new Date('2025-12-31T00:00:00');
+
+      function updateCountdown() {
+        const now = new Date();
+        const difference = targetDate.getTime() - now.getTime();
+
+        let days = 0, hours = 0, minutes = 0, seconds = 0;
+
+        if (difference > 0) {
+          days = Math.floor(difference / (1000 * 60 * 60 * 24));
+          hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+          minutes = Math.floor((difference / 1000 / 60) % 60);
+          seconds = Math.floor((difference / 1000) % 60);
+        }
+
+        document.getElementById('days').textContent = String(days).padStart(2, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+      }
+
+      setInterval(updateCountdown, 1000);
+      updateCountdown(); // Initial call
+    });
+  </script>
+</body>
+
 </html>
