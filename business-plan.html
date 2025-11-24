@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>idda.io - Business Plan</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #1a1a1a;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow: auto;
+        }
+
+        .viewer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 1920px; /* Adjusted for better reading width */
+            padding: 20px;
+            box-sizing: border-box;
+            gap: 20px; /* Added gap for better separation on white bg */
+        }
+
+        .slide-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow for white bg */
+            margin-bottom: 0;
+        }
+
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #2563eb; /* var(--accent-color) */
+            color: white;
+            text-decoration: none;
+            font-family: 'Pretendard', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+            z-index: 100;
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+            background-color: #1d4ed8;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Back to Home</a>
+
+    <div class="viewer-container" id="image-container">
+        <!-- Images will be injected here -->
+    </div>
+
+    <script>
+        const totalPages = 25;
+        const container = document.getElementById('image-container');
+
+        for (let i = 1; i <= totalPages; i++) {
+            const img = document.createElement('img');
+            img.src = `business_plan/${i}.jpg`;
+            img.alt = `Business Plan Slide ${i}`;
+            img.className = 'slide-image';
+            img.loading = 'lazy'; // Lazy load for performance
+            container.appendChild(img);
+        }
+    </script>
+</body>
+</html>
